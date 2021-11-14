@@ -1,0 +1,18 @@
+Effect or side Effect.
+
+Use Effect = A function that should be executed After every component
+evaluation if the specified dependencies changed
+
+use affect takes two inputs
+useEffect(() => {...}, [dependencies]);
+
+Browser has also multiple storages like 
+cookies, 
+local storrage,
+session storage,
+indexedDB,
+web SQL
+cookies
+trust tooken etc.
+
+

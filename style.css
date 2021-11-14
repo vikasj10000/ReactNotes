@@ -1,0 +1,123 @@
+@import url();
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+
+nav{
+    height: 80px;
+    background-color: rgb(161, 157, 201);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding : 0px 50px 0px 100px;
+}
+
+nav > h3 {
+    font-size: 33px;
+    color: white;
+    font-weight: 600px;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+
+}
+
+nav ul li a {
+    color : white;
+    text-decoration: none;
+    padding : 8px 10px;
+    font-size: 13px;
+    font-weight: 500px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover{
+ background-color: rgb(133, 37, 37);
+ border-radius: 10px;
+}
+
+nav input{
+    display: none;
+}
+
+nav .menu-btn i{
+    color : #fff;
+    font-size: 22px;
+    cursor : pointer;
+    display: none;
+}
+
+
+@media (max-width : 810px) {
+    .logo_handler {
+       display: flex;
+       align-items: center;
+       text-align: center;
+                   }
+
+    /* it's helping us to get that cross icon */
+    #click:checked ~.menu-btn i::before {
+     content: "\f00d";
+    }
+
+  nav ul {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    background: #111;
+    height: 100vh;
+    width: 100%;
+    display: block;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+
+
+  /* once the user will click on icon it will show the menus*/
+    #click:checked ~ ul{
+    left: 0%;
+    }
+
+  nav ul li {
+      margin: 40px 0;
+      text-align: center;
+      
+    }
+
+  nav ul li a{
+      font-size: 22px;
+      margin-bottom: 5px red;
+
+    }
+
+  nav ul li a:hover{
+      color: cyan;
+      background: none;
+  }
+
+  nav .menu-btn i{
+  display: block; 
+  }
+}
+
+.banner{
+    background-image: url(1.jpg);
+    height: auto;
+    width: 100%;
+    background-position: center;
+    object-fit: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
+        
+}
+
+

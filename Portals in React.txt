@@ -1,0 +1,74 @@
+portal is one of the feature which was introduced by react recently in which
+we can render our data outside of even root element or we can display that in
+adjecnt of HTML "root" element and also we can use the react
+
+so simply it means from one React component we can also create one other root component
+and from that first root components we can pass values to other Root value
+
+
+
+Where it works?
+it uses in creating the modal and also at time when we will have need of 
+Jquery even we can use that.
+
+how we can use the portals
+1. define the id the portal where we want to use it.
+
+2. to give value to portal we use a function call cratePortal in which we pass 2 values
+   the first is html element or any component and the secand the id of portal where it should show up.
+
+3. createPortal is a function of ReactDom so we have to also import this on the page 
+   where we are going to create a react protal  
+   ReactDOM.createPortal(<>,doucment.getElementById();)
+
+4. we can use that it inside a return and function of React.
+
+
+index.html
+============
+
+<!Doctype>
+<html>
+<head>
+<meta utf= />
+<title>Learning about the portals in React.js</title>
+</head>
+<body>
+   <div id="root"></div>
+   <div id="id-portal"> </div>          1.========= define id of portal
+</body>
+</html>
+
+---------------------------------------------------
+
+App.js
+===========
+import React from "react";
+import Portal_use from "./Portal_use";
+
+cont App = () => {
+return(
+  <>
+   <Portal_use/>
+  </>
+);
+} 
+export default App;
+-----------------------------------------------
+
+Portal_use.js
+================
+
+import React from "react";
+import ReactDOM from "react-dom";             //importing React dom
+
+cont Portal_use  = () => {
+return(
+  ReactDOM.createPortal(                  //using ReactDoms portal function
+      <h1>This is a portal</h1>,
+      document.getElementById("id-portal");  //passing value to or portal we can pass in first html element and 
+                                               jsx component which we have Created.
+  );
+);
+}
+export default Portal_use;

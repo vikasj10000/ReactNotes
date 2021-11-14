@@ -1,0 +1,106 @@
+notes of material ui
+
+installing using yarn and npm both
+
+yarn add  @material-ui/core                     in yarn like npm install we write yarn add
+npm install @material-ui/core              
+
+once we have installed the material UI in 
+our reactProject we need to import that to use that in our project.
+
+
+so let's try to import that in our page
+
+import React from "react";
+import Button from "@material-ui/core/Button"; like this to import
+
+class App extends Component{
+render(){
+return(
+<div>
+<Button varient="contained" color="green"></Button>
+</div>
+);
+}}                             // there are 2 types of varient property  1.outlined  2.contained  
+
+props size= medium, small, large 
+also to disable the button we can use disable as the prop
+ 
+
+
+
+To add icon we need to install it how we can do that
+
+for yarn : yarn add @material-ui/icons
+for npm  : npm install @material-ui/icons
+
+once we done that we use that by importing in our project
+ 
+
+import React from "react";
+import Button from "@material-ui/core/Button"; like this to import
+import saveIcon from "@material-ui/icons/save";
+
+function App() {
+return (
+  <div>
+    <div className="APP">
+     <header className="App-header">
+       <Button
+        startIcon={ <saveIcon />}
+        size="large" color="secondary"
+        varient="contained"
+       >Button</Button>          
+
+     </header>
+  </div>
+
+);        we will write the icon name inside startIcon={< iconName/>}
+}
+
+
+there are mainly 5 contained buttons such as 
+color primary, secondary, disabled, contained-disabled
+
+
+text buttons : a button which will react like a text and won't have a backgound color just it 
+               be colord in it's text known as the text button.
+
+      <button color="primary">Yahoo</button>
+      <butoon color="Google" >Google</button>
+       these buttons won't use the propery called varient inside itself
+
+
+
+Outlined Buttons : are buttons similar to text buttons but it will contain a colored bodder and 
+                   in varient a propery called outlined.
+
+                   <button variant="outlined" color="primary" >TextMe</button>
+
+button with icons : 
+
+
+
+
+ButtonGroup : buttons will be attached to each-other.
+
+
+<ButtonGroup color="primary" aria-label="outlined primary button group">
+  <Button>One</Button>
+  <Button>Two</Button>
+  <Button>Three</Button>
+</ButtonGroup>
+
+<ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
+  <Button>One</Button>
+  <Button>Two</Button>
+  <Button>Three</Button>
+</ButtonGroup>
+
+<ButtonGroup variant="text" color="primary" aria-label="text primary button group">
+  <Button>One</Button>
+  <Button>Two</Button>
+  <Button>Three</Button>
+</ButtonGroup>
+                   
+

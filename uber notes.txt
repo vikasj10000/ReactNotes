@@ -1,0 +1,504 @@
+Technologies we are gonna use
+
+Reactjs, tailwind CSS, .Nextjs, firebase, mapbox for (map)
+------------------------------------------------------------------------
+
+Installation
+=================
+
+To install the nextjs with the tailwind css use this cmd              
+
+To create project with the tailwind css with .nextJs
+npx create-next-app -e with-tailwindcss my-project
+cd my-project
+
+To create project without the tailwind css with .nextJs
+npx create-next-app@latest (we are going to do that in this way.)
+
+and once it is created go to your code editor by simply typing 
+code .
+
+to run your nextjs server use this 
+npm run dev
+
+-------------------------------------------------------------------------------
+
+Folder Structure
+=================
+
+.next
+components (we'll create this folder and this one is going to be where we will create our components and use them right here)
+node_modules
+pages ( here it contains two pages 1. _app.js      2.index.js )
+public
+------------------------------------------------------------------------------------
+----------------------------------------------------------------------
+
+installing CSS
+==============
+
+Here we are going to use the tailwind css and styled components so we need
+to install them.
+
+npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+
+now to create the configration file of the tailwind we will use this cmd
+
+npx tailwindcss init -p
+
+it will create the configration file in our project by the name of
+
+postcss.config.js
+tailwind.config.js
+
+then in your tailwind.config.js file insert the purge
+cause we here Configure Tailwind to remove unused styles in production
+
+and then Import Tailwind directly in your JS
+cause we have no plans to use any custom css 
+fastest way to include Tailwind is to import it directly in pages/_app.js:
+
+  // pages/_app.js
+ import '../styles/globals.css'
+ import 'tailwindcss/tailwind.css'
+
+  function MyApp({ Component, pageProps }) {
+    return <Component {...pageProps} />
+  }
+
+  export default MyApp
+
+
+
+install tailwind with the styled component.
+
+   npm i -D tailwind-styled-components
+-----------------------------------------------------------------------------------------
+
+Mapbox
+======
+
+
+Mapbox is provided by the Mapbox.com in order to use that in our website we need to go in 
+there website and use that there.
+
+so first we need to create a account for the same and then we can apply for that.
+
+pick platoform which is web
+pick method and install that in method we are using npm insted of the cdn
+
+npm install mapbox-gl --save
+
+then import that in your app.js file something like this.
+ 
+import 'mapbox-gl/dist/mapbox-gl.css'
+
+then on next page we need to go where it will be giving us instructions to do some other task.
+
+
+
+then go to the page where you want to use the mapbox and import the mapbox something like this.
+
+import mapbox from '!mapbox-gl'
+
+and use the token which we got at the last page of the mapbox site which will help mapbox to find you unqiely
+
+mapboxgl.accessToken = 
+'pk.eyJ1IjoidmlrYXMxMDAwMCIsImEiOiJja3ZuZnV6ZHg5cHhhMm9zN3NkNjJhM2d2In0.-UvWzB7DRYSiirFqESME1A';
+
+
+so define that down the import line
+and inside the our component we will define the code of the mapbox.
+which got from the same page of the mapbox site something like this
+here we are making it const insted of var cause we can find it unqiuely all the time.
+
+
+export default function Home() {
+ 
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/drakosi/kvcwq3rwdw4314o3i2'
+    center: ,
+    zoom: ,
+    });                        //doing initalization of the map over here.
+
+ return(
+
+);
+}
+
+
+here once it is done we are going to implement that using the useEffect() hook which we got from the react 
+in order to use that in our application we need to import that in our page and how we can do that by simply
+going at the top of out application and doing thing like this.
+
+also implemention of the mapbox in react article you can find on this link.
+ 
+https://docs.mapbox.com/help/tutorials/use-mapbox-gl-js-with-react/
+
+import {useEffect} from 'react'
+
+
+
+
+
+
+
+
+
+
+
+
+import { useEffect } from 'react' 
+
+import Head from 'next/head'
+import Image from 'next/image'
+import styles from '../styles/Home.module.css'
+import tw from "tailwind-styled-components"
+import mapboxgl from '!mapbox-gl';
+
+ 
+mapboxgl.accessToken = 
+'pk.eyJ1IjoidmlrYXMxMDAwMCIsImEiOiJja3ZuZnV6ZHg5cHhhMm9zN3NkNjJhM2d2In0.-UvWzB7DRYSiirFqESME1A';
+
+export default function Home() {
+
+/* const map = new mapboxgl.Map({  earlier the code we got was like this now we are implenting that in our react application then
+    container: 'map',
+    style: 'mapbox://styles/drakosi/kvcwq3rwdw4314o3i2'
+    center: ,
+    zoom: ,
+    });
+*/
+
+
+
+
+
+
+useEffect(() => {
+        //here we are initalizing our mapbox with the useEffect hook.
+         //we have made some changes in the boilerplate code which was given by the mapbox itself which is like.
+
+               /*    useEffect(() => {
+                    if (map.current) return; // initialize map only once  //we removed this initalization totally cause we dont' have need of it.
+                    map.current = new mapboxgl.Map({    // we removed this  map.current and store it in a const called map.
+                    container: mapContainer.current,    // we have given it our container id where we want to display our mapbox map in the section of website.
+                    style: 'mapbox://styles/mapbox/streets-v11', 
+                     center: [lng, lat],   //we defined langitude and latitude of the place
+                     zoom: zoom           //we removed by default zoom and given it a number
+                     });
+               */     });
+
+
+
+
+
+ //       if (map.current) return; // initialize map only once
+        const map = new mapboxgl.Map({
+          
+          container: "map",     //here we are refering container id which we have depinded inside the Map tag down there it will be refering that oly
+          //  style: 'mapbox://styles/mapbox/streets-v11',      we have two styles which we can chose with whom we wanna go.
+               style : 'mapbox://styles/drakosi/ckvcwq3rwdw4314o3i2ho8tph',
+            
+          center: [75.857727, 22.719568], //here we can give logitude and lattitude accordingly
+          zoom: 3,   //it represent zoom number by default
+        })
+      })
+
+  return (
+    <Wrapper>
+      <Map id="map">Map</Map>     //id which we are giving to container of the map box
+      <ActionItems>Start</ActionItems>
+    </Wrapper>
+  
+  )
+}
+
+
+Here we have done sucessfull implementation of it so we are going to create a seprate component for the this 
+map and we are going to call it then in our main page.
+
+for the same we are going to create a folder called component and inside that folder we are going to implment the 
+code for the map.
+
+and we will create a seprate component for the map in this way by the coping all the code from the index.js page
+which is needed for the implmention of the mapbox over here.
+
+
+then our map.js seprate code will look like this.
+
+Map.js
+==========
+
+import { useEffect } from "react";
+import tw from "tailwind-styled-components"
+import mapboxgl from '!mapbox-gl';
+
+mapboxgl.accessToken = 
+'pk.eyJ1IjoidmlrYXMxMDAwMCIsImEiOiJja3ZuZnV6ZHg5cHhhMm9zN3NkNjJhM2d2In0.-UvWzB7DRYSiirFqESME1A';
+
+function map() {    
+/* const map = new mapboxgl.Map({  earlier the code we got was like this now we are implenting that in our react application then
+    container: 'map',
+    style: 'mapbox://styles/drakosi/kvcwq3rwdw4314o3i2'
+    center: ,
+    zoom: ,
+    });
+*/
+
+    useEffect(() => {
+       //here we are initalizing our mapbox with the useEffect hook.
+       //if (map.current) return; // initialize map only once
+       const map = new mapboxgl.Map({
+       container: "map",     //here we are refering container id which we have depinded inside the Map tag down there it will be refering that oly
+       style: 'mapbox://styles/mapbox/streets-v11',
+       //style : 'mapbox://styles/drakosi/ckvcwq3rwdw4314o3i2ho8tph',
+       center: [75.8577, 22.7196 ], //here we can give logitude and lattitude accordingly
+       zoom: 11,   //it represent zoom number by default
+    })
+    })
+
+    return <Wrapper id="map"></Wrapper> ;
+  }
+export default map;
+
+
+const Wrapper = tw.div`
+flex-1
+`
+
+
+Which we are going to import over index.js page
+
+index.js
+=========
+
+import Head from 'next/head'
+import Image from 'next/image'
+import styles from '../styles/Home.module.css'
+import tw from "tailwind-styled-components"
+import Map from './components/Map'
+ 
+export default function Home() {
+  return (
+    <Wrapper>
+      <Map/>
+            <ActionItems>
+    {/*inside this we have need to implment three things.
+     *  Header
+     *  ActionButton
+     *  InputButtons
+     */}
+          {/*Header*/}
+          <Header>
+            <UberLogo src="https://i.ibb.co/84stgjq/uber-technologies-new-20218114.jpg"/>
+            <Profile>
+                     <Name>Vikas Jaiswal</Name>
+                     <UserImage 
+                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMiiXG9Y5smfwS7Wyhm6h6HnU1csKg3eiAeg&usqp=CAU"
+                     /> 
+            </Profile>
+          </Header>
+
+          {/*ActionButtons */}
+          <ActionButtons>
+                   <ActionButton>
+                     <ActionButtonImage src="https://i.ibb.co/cyvcpfF/uberx.png" />
+                     Ride
+                   </ActionButton>
+
+                  <ActionButton>
+                    <ActionButtonImage src="https://i.ibb.co/n776JLm/bike.png"/>
+                     Wheels
+                  </ActionButton>
+
+                  <ActionButton>
+                    <ActionButtonImage src="https://i.ibb.co/5RjchBg/uberschedule.png"/>
+                     Reserve
+                  </ActionButton>
+          </ActionButtons>
+          
+          
+          {/*InputButtons */}
+          <InputButton>
+                Where to Go?
+          </InputButton>
+      </ActionItems>
+    </Wrapper>
+  
+  )
+}
+
+const Wrapper = tw.div` 
+flex flex-col bg-300 h-screen
+`
+const ActionItems = tw.div`
+flex-1 p-4
+`
+
+const Header = tw.div`
+flex justify-between item-center
+`
+
+const UberLogo = tw.img`
+h-28
+`
+
+const Profile = tw.div`
+flex item-center 
+`
+const Name = tw.div`
+mr-4 w-20 text-sm 
+`
+
+const UserImage = tw.img`
+h-12 w-12  rounded-full border border-gray-200 p-px
+`
+const ActionButtons = tw.div`
+flex
+`
+const ActionButton = tw.div`
+ flex flex-col justify-center  items-center bg-gray-200 flex-1  m-1 h-32 rouonded-lg transform hover:scale-105 text-xl
+`
+
+const ActionButtonImage = tw.img`
+h-3/5
+`
+
+const InputButton = tw.div`
+h-20 bg-gray-200 text-2xl p-4 flex item-center mt-8 
+`
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+Now Working on functionality to go the next page on Click
+==========================================================
+Or Ride, Wheal, Reschduel
+And next.js had made things preety easy for us what it did that.
+it created a page at the directry which can get directly linked so we don't have need to get worried about the 
+concept of the routing that what we used to use in the older times in Reactjs.
+
+For link and all the thing in nextjs we have to create page inside the pages folder of the project only and we will be good to go then.
+no Need of any react router and all over here.
+
+In order to connect our Search page with our index.js page
+
+in our main page we have just need to import that like
+
+import Link from 'next/link';
+in order to use links in our application on page we need to import that.
+
+
+Now in order to link our page from one page to other go 
+to the section in which you want to link the page and 
+then write that Page inside the 
+
+<Link href="/Search"> and give the name of the component or page after following /
+
+</Link>
+
+   <Link href="/Search"> //Search is the name of Page.
+                    <ActionButton>
+                     <ActionButtonImage src="https://i.ibb.co/cyvcpfF/uberx.png" />
+                       Ride
+                     </ActionButton>
+   </Link>
+
+=======================================================================================================
+
+Day 2
+----------
+We will be building from here to there point 
+and will be also chosing the vechile and telling fair to the user
+also implmenting authentication for the same.
+
+Here in day two we will be building things like one place to another place how customer can go and more then
+that what would be fair of the ride and how much time it's gonna and how that is something that the user can 
+show on the Mapbox one destination to other
+
+So for the same we are here going to Create a page called confirm.js in which there are going to be the 2 sections
+MapSection Confirm your Uber ride section and 
+
+Confirm.js
+==========
+
+
+for plotting markers for the test case we have used the default method which is provided by the map only
+
+ //it will help to mark locatiion in the map box from one point to the other
+   //addToMap(Map);
+   const marker1 = new mapboxgl.Marker()
+   .setLngLat([75.8577, 22.7196])
+   .addTo(map);    
+  
+inside the use effect so we can make handle request.
+
+
+example for how we can forward gecoding.
+
+https://docs.mapbox.com/api/search/geocoding/
+
+
+Here for the zooming between two places we are using a thing called fit bound.
+and the code which we got for the zooming same from there website only.
+https://docs.mapbox.com/mapbox-gl-js/example/fitbounds/
+
+which is 
+map.fitBounds([
+[32.958984, -5.353521], // southwestern corner of the bounds
+[43.50585, 5.615985] // northeastern corner of the bounds
+]);
+
+
+and we replaced that with our code which is something like this.
+
+ if(props.pickupCoordinates && props.dropofCoordinates) 
+      {
+        map.fitBounds([props.dropofCoordinates, props.pickupCoordinates]);  
+      }
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------
+
+Login.js page
+=============
+
+
+We are here going to create this loging.js page for aur application in which we will be checkig the 
+authenticity of the user.
+
+for the same we are going to use the google authentication.
+
+1. install firebase in your test editor
+2. create a firebase.js file in which we are going to store
+  the api from firebase and then we are use that in our project with some 
+  condition in our Login page
+
+3. once the user will get verified then only he will be able to the 
+   Uber ride page. 
+   
+
+
+
+Login.js
+
+import React from "react";
+import 
+
+
+
+
+
+
+
+          
+

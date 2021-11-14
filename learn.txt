@@ -1,0 +1,32 @@
+Thing to learn in react
+
+key and list concept.
+
+1. Redux
+2. Advanced Redux
+3. Hooks
+7. Forms
+8. Authentication.
+
+
+differance btw state and props
+SPA?
+data binding? it uses onwway what is one way data binding
+redux?
+contet AP ?
+Differace btw redux store and context api
+controlled an uncontrolled component
+key ? why we need of that 
+hwo to prevent components from re-rending cors issue
+higher order component.
+error boundries
+how to install bootstrap in your react application
+How to prevent a component from re-rendering.
+
+
+Differance between and the controlled and uncontrolled components.
+
+
+useEffect(); -> 1. shouldComponentMount
+                2. componentDidMount
+                3. componentDidUpdate

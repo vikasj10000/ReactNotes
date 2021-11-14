@@ -1,0 +1,15 @@
+Things to revise in React
+
+spread operator.
+slice method
+splice method
+filter method
+map function 
+slices in Redux
+list and keys concept.
+
+
+twoWay binding
+lifecycle hooks
+
+

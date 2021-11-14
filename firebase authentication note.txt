@@ -1,0 +1,161 @@
+How to setup the firebase Authentication for your React app that's what we are gonna learn here.
+
+So I hope you are equally exited as i am 
+
+
+create a app  
+
+npx-create-react-app    auth
+
+now once you created the app start the app and remove all unnecessary files from your app.
+
+and use this to enable the google sign option first
+
+
+now go to the firebase and create the project
+also at the authentication section enable the google email authentication.
+once you are done with that we need to keep moving which we can do someting like this.
+
+
+install the firebase first 
+npm i firebase
+
+
+now in firebase.js file add files
+
+import firebase from "firebase";
+
+const firebaseConfig = {
+..............
+'''''''''''''''''
+'''''''''''''''''''''''
+''''''''''''''''''''''
+''''''''''''''''''''''''
+''''''''''''''''''''''''''
+};
+
+
+const firebaseApp = firebase.firebaseInitilizeApp(firebaseConfig);
+const auth = firebase.auth();
+const provider = new firebase.auth.GoogleAuthProvider();
+const db = firebase.firestore();
+
+export default firebase;
+
+
+
+
+.....................................................................................................
+
+Login page  ( where we have need to implement the firebase authentication )
+============
+
+
+import React from "react";
+
+import {firebase} from "firebase";   //we are importing it from our local firebase.
+
+
+
+const SignIN = () => {                                              //this is class
+ 
+      var  google_provider = new firebase.auth.GoogleAuthProvider();
+           firebase.auth().signInWithPopup(google_provider);
+
+           .then((re) => {
+                  //console.log(re);  here first we are doing console.log to see if we are gettig the data from the google for authentication
+            })
+            .catch((err) => {
+                   //console.log(err);         in case of we get any error then we can catch that and let's tha won't affect our code.
+            })
+     
+const SignInWithFirebase = () => {}
+
+return (
+<>
+  
+
+<button onClick={SignInWithFirebase} > Sign In </button>
+
+</>
+);
+} 
+
+export default SignIN; 
+
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+ App. js
+
+
+import React, { useState } from "react";
+import './App.css';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home form "./Home";
+import SignIn from "./SignIn";
+import firebase from "./firebase";
+
+function App = () => {
+
+ const [isUserSignedIn, setIsUserSignedIn] = useState(true);  //we will redirect user if he will be sign in and if not too.
+
+    firebase.auth().onAuthStageChanged( (user) => {
+        if (usrer)
+           {
+            return setIsUsrSignedIn(true);
+           }   
+          setIsUsrSignedIn(false);
+
+        });
+
+              if(isUserSignedIn === true ) { 
+                                             return (     //if user will be sign in then it will show home page else login page.
+                                                     <Router>
+                                                      <Switch>
+                                                       <Route path="/" component={Home} />
+                                                      </Switch>
+                                                     <Router>
+                                                    ); 
+                  
+                                            }
+                                            else{
+                                                 return (
+                                                     <Router>
+                                                      <Switch>
+                                                       <Route path="/" component={Home} />
+                                                      </Switch>
+                                                     <Router>
+                                                    ); 
+
+                                                 }
+
+
+return (
+       <Router>
+         <Switch>
+             <Route path="/" component={SingIN} />
+         </Switch>
+       <Router>
+); 
+}
+
+
+
+
+Home.js
+
+
+
+import firebase from "../firebase"; local
+import React from "react";
+
+const Home = () => { 
+   <> 
+        <h1>Home</h1>
+        <button onClick={signOut}>Signout</button>
+   </>
+}
+
+export default Home;
